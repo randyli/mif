@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+    ServerAdmin randy@ikuaizu.com
+    DocumentRoot "/home/randy/work/mif/apps/mif/wwwroot"
+    ServerName randy.mif.com
+    ErrorLog "logs/randy.mif.com-error_log"
+    CustomLog "logs/randy.mif.com-access_log" common
+    <Directory /home/randy/work/mif/apps/mif/wwwroot>
+    Options Indexes FollowSymLinks Includes ExecCGI
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f 
+    RewriteCond %{REQUEST_FILENAME} !-d 
+    RewriteRule . index.php
+    </Directory>
+</VirtualHost>

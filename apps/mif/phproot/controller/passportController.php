@@ -42,7 +42,7 @@ class passportController extends AdminController
     }
     
 
-    function afterLogin($uid)
+    public function afterLogin($uid)
     {
     }    
 

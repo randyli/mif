@@ -12,33 +12,37 @@ class passportController extends AdminController
 
     public function actionLogging()
     {
-        $json = array('error'   => 0, 'message' => '');
+        $err = '';
         $rep = WinBase::app()->getRequest();
-        if ($rep->isAjaxRequest()) {
+        do {
+            
+            if (!$rep->isAjaxRequest()) {
+                $err = 'not json';
+                break;
+            }
+
             $username = $rep->getParam('username', '');
+             if ($username == '') {
+                $err = 'username is null';
+            }
             $password = $rep->getParam('password', '');
-
-            if (!$username) {
-                $json = array('error'   => 41, 'message' => 'The username cannot be empty');
+            if ($password == '') {
+               $err = 'password is null';
             }
+        }while(0);
 
-            if (!$password) {
-                $json = array('error'   => 41, 'message' => 'The password cannot be empty');
-            }
-
-            $resp = array();
-            if (!$json['error']) {
-                $user_info = user_info::model()->getInfoByMobile($username);
-                if (empty($user_info) || $user_info['passwd'] != $password) {
-                    $json = array('error' => 40, 'message'  => '用户名或密码错误');
-                } else {
-                    $this->session->add('login_user', $user_info);
-                    $json = array('error' => 0, 'referer'  => $this->getReferer(), 'message' => '登入成功！');
-                }
-            }
+        if ($err != '') {
+            echo json_encode(array('result'=>'error', 'msg'=>$err));
+            die;
         }
-        
-        echo Json::encode($json);
+        $user_info = user_info::model()->signIn($username, $password);
+        if (!$user_info || count($user_info) == 0) {
+            echo json_encode(array('result'=>'error', 'msg'=>'username or password error'));
+            die;
+        }
+        $this->session->add('login_member', $user_info);
+        $res = array('result'=>'ok', 'referer'  => $this->getReferer(), 'message' => '登入成功！');
+        echo json_encode($res);
     }
     
 

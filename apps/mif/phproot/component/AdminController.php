@@ -34,7 +34,7 @@ class AdminController extends BaseController{
 	
 	
 	private function _init_member(){
-        $login_member = $this->session->get('login_user');		
+        $login_member = $this->session->get('login_member');
         if (!empty($login_member)) {
             $member = $login_member;
         } else {

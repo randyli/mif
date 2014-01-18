@@ -1,9 +1,10 @@
 <?php
 class defaultController extends AdminController
 {
-	
     public function actionIndex() {
-		$this->render("index");
+    	$data = array();
+    	$this->module = 'index';
+		$this->render("index", $data);
 	}
 }
 ?>

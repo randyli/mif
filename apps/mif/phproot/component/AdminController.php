@@ -3,9 +3,10 @@ class AdminController extends BaseController{
 	
 	public $session = NULL;
 	public $member = NULL;
-	
+    public $module = '';
+    public $menu = '';
 	public $_G = array();
-	
+
 	public function init(){
 		$this->session = new Session();
 		$this->_init_member();
@@ -31,7 +32,6 @@ class AdminController extends BaseController{
 		}
 		return true;
 	}
-	
 	
 	private function _init_member(){
         $login_member = $this->session->get('login_member');

@@ -1,9 +1,15 @@
-  		<div class="col-md-2">
-			<ul class="list-group">
-  			<li class="list-group-item">添加用户</li>
-			  <li class="list-group-item">权限管理</li>
-			  <li class="list-group-item">部门</li>
-			  <li class="list-group-item">Porta ac consectetur ac</li>
-			  <li class="list-group-item">Vestibulum at eros</li>
-			</ul>
-  		</div>
+<div class="col-md-2">
+<ul class="list-group">
+  <?php 
+  	$menus = Config::getConfig('module', $this->module);
+  	foreach($menus['menus'] as $item) {
+  		if($this->menu == $item['action']) {
+  			echo "<a class='list-group-item active' ";
+  		} else {
+  			echo "<a class='list-group-item' ";
+  		}
+  		echo " href='{$item['action']}'>{$item['title']}</a>";;
+  	}
+  ?>
+</ul>
+</div>

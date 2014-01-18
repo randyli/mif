@@ -5,12 +5,12 @@
 class memberController extends AdminController {
 
 	/**
-	 *  个人信息首页
-	 *  展现个人的基本信息
+	 *  用户管理的首页
 	 */
 	public function actionIndex() {
-		$data = array('menu' => 'm_self');
-		$this -> render('self_info', $data);
+		$this->module = 'user_manager';
+		$this->menu = '/member/list';
+		$this -> render('member_index');
 	}
 
 	/**

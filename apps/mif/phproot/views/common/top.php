@@ -1,30 +1,34 @@
-<div class="topbar-wrapper">
-<div class="container">
-<div class="row topbar">
-  <div class="col-md-8"><img src='/img/admin_logo.png'></div>
-  <div class="col-md-4">
-  	<div class='row topbar-content'>
-  	<?php if(!$this->is_guest()) { ?>
-  	<div class='col-md-4'>
-  		您好，<?php echo $this->_G['member']['realName']; ?>
-  	</div>
-  	<div class='col-md-4'>
-  		<a href='/msg' class='msg'>
-  			<img src='/img/msg.png'>
-  			<span class='msg-tip'>6</span>
-  			消息
-  		</a>
-  	</div>
-  	<div class='col-md-4'>
-  		<a href='/help'>帮助</a> | <a href='/passport/logout'>退出</a>
-  	</div>
-  	<?php }  else { ?>
-  	<div class='col-md-4'>
-  		<a href='/help'>帮助</a> | <a href='/passport/login'>登录</a>
-  	</div>	
-  	<?php } ?>
-  	</div>
-  </div>
-</div>
-</div>
+<div class="row">
+    <div class="span12">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#">首页</a>
+        </li>
+        <li>
+          <a href="#">资料</a>
+        </li>
+        <li class="disabled">
+          <a href="#">信息</a>
+        </li>
+        <li class="dropdown pull-right">
+           <a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉<strong class="caret"></strong></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">操作</a>
+            </li>
+            <li>
+              <a href="#">设置栏目</a>
+            </li>
+            <li>
+              <a href="#">更多设置</a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+              <a href="#">分割线</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 </div>

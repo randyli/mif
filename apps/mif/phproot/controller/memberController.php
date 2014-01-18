@@ -10,6 +10,7 @@ class memberController extends AdminController {
 	public function actionIndex() {
 		$this->module = 'user_manager';
 		$this->menu = '/member/list';
+		
 		$this -> render('member_index');
 	}
 
